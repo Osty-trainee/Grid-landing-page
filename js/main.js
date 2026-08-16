@@ -1,64 +1,32 @@
-(() => {
-  const hamburger = document.querySelector('.nav__hamburger');
-  const closeBtn  = document.querySelector('.menu-panel__close');
-  const panel     = document.getElementById('menu-panel');
-  const overlay   = document.getElementById('menu-overlay');
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerBtn = document.querySelector('.nav__hamburger');
+  const menuPanel = document.getElementById('menu-panel');
+  const menuOverlay = document.getElementById('menu-overlay');
+  const toggleImg = hamburgerBtn.querySelector('img');
 
-  function openMenu() {
-    panel.classList.add('is-open');
-    overlay.classList.add('is-open');
-    panel.setAttribute('aria-hidden', 'false');
-    overlay.setAttribute('aria-hidden', 'false');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    // Move focus to close button
-    closeBtn.focus();
-  }
+  const menuIconSrc = './assets/images/icon-menu.svg';
+  const closeIconSrc = './assets/images/icon-close.svg';
 
-  function closeMenu() {
-    panel.classList.remove('is-open');
-    overlay.classList.remove('is-open');
-    panel.setAttribute('aria-hidden', 'true');
-    overlay.setAttribute('aria-hidden', 'true');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    // Return focus to hamburger
-    hamburger.focus();
-  }
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = menuPanel.classList.contains('is-open');
 
-  hamburger.addEventListener('click', openMenu);
-  closeBtn.addEventListener('click', closeMenu);
-  overlay.addEventListener('click', closeMenu);
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && panel.classList.contains('is-open')) {
-      closeMenu();
-    }
-  });
-
-  // Trap focus inside the menu panel while it's open
-  panel.addEventListener('keydown', (e) => {
-    if (e.key !== 'Tab') return;
-    if (!panel.classList.contains('is-open')) return;
-
-    const focusable = Array.from(
-      panel.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])')
-    ).filter(el => !el.disabled);
-
-    const first = focusable[0];
-    const last  = focusable[focusable.length - 1];
-
-    if (e.shiftKey) {
-      if (document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      }
+    if (!isOpen) {
+      menuPanel.classList.add('is-open');
+      menuOverlay.classList.add('is-open'); 
+      toggleImg.src = closeIconSrc;
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
     } else {
-      if (document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
+      menuPanel.classList.remove('is-open');
+      menuOverlay.classList.remove('is-open'); 
+      toggleImg.src = menuIconSrc;
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
     }
   });
-})();
+
+  menuOverlay.addEventListener('click', () => {
+    menuPanel.classList.remove('is-open');
+    menuOverlay.classList.remove('is-open');
+    toggleImg.src = menuIconSrc;
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+  });
+});
