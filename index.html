@@ -2,59 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-
   <title>Frontend Mentor | Grid landing page</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
+  <!-- The main single Grid of the entire site -->
+  <main class="grid-page">
 
-  <!-- Nav -->
-  Bridge Collective
+    <!-- 1. Logo and Hamburger Button Block (Top Left Corner) -->
+    <div class="grid-item grid-item--logo">
+      <div class="logo">
+        <span class="logo__circle"></span> Bridge Collective
+      </div>
 
-  <!-- Hero -->
-  A classroom for every child.
+      <!-- Mobile Menu Button (Hamburger) -->
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
+          <img src="./assets/images/icon-menu.svg" alt="" class="menu-toggle__icon" id="menu-icon-img">
+      </button>
+    </div>
 
-  We fund the schools, train the teachers, and measure what works — so every child we reach today becomes a graduate tomorrow.
+    <!-- 2. Top right panel (The drop-down menu will be hidden here) -->
+    <div class="grid-item grid-item--top-right">
+      <!-- Menu navigation bar -->
+      <nav class="main-menu" id="main-menu" aria-hidden="true">
+        <ul class="main-menu__list">
+          <li><a href="#" class="main-menu__link">About</a></li>
+          <li><a href="#" class="main-menu__link">Our Work</a></li>
+          <li><a href="#" class="main-menu__link">Partners</a></li>
+          <li><a href="#" class="main-menu__link">Annual Report</a></li>
+          <li><a href="#" class="main-menu__link">Donate</a></li>
+        </ul>
+      </nav>
+    </div>
 
-  <!-- Stats -->
-  2.4M
-  Students reached
-  Across 31 countries since 2011.
+    <!-- 3. Main Heroic Header Block (Left Center) -->
+    <div class="grid-item grid-item--hero">
+      <h1 class="main-title">A classroom for every child.</h1>
+      <p class="main-subtitle">We fund the schools, train the teachers, and measure what works — so every child we reach today becomes a graduate tomorrow.</p>
+    </div>
 
-  1,284
-  Schools partnered
-  In 14 countries, from Kenya to Guatemala.
+    <!-- 4. Stats 1: 2.4M -->
+    <div class="grid-item grid-item--stat1">
+      <div class="stat-box">
+        <!-- Sparkle icon in the corner -->
+        <img src="./assets/images/icon-sparkle.svg" alt="icon sparkle for block students reached" class="stat-box__icon icon-sparkle" aria-hidden="true">
+        <div class="stat-box__counter">
+         <!-- JS will read target and animate from 0 -->
+          <span class="stat-number" data-target="2.4" data-float="true">0</span>
+          <span class="stat-suffix">M</span>
+        </div>
+      </div>
+    </div>
 
-  38K
-  Teachers trained
-  Equipped with modern tools and methodology.
+     <!-- 5. Decorative plus "+" -->
+    <div class="grid-item grid-item--plus">
+      <img src="./assets/images/icon-plus.svg" alt="" class="decor-icon" aria-hidden="true">
+    </div>
 
-  3.1×
-  Graduation lift
-  Partner schools outperform national averages 3x.
+    <!-- 6. Stats 2: 1,284 -->
+    <div class="grid-item grid-item--stat2">
+      <div class="stat-box">
+        <div class="stat-box__counter">
+          <span class="stat-number" data-target="1284" data-float="false">0</span>
+          <span class="stat-suffix"></span>
+        </div>
+      </div>
+    </div>
 
-  <!-- Footer -->
-  © 2026 Bridge Collective
-  Registered charity 12345678
+    <!-- 7. Text under the first number (Students reached) -->
+    <div class="grid-item grid-item--text1">
+      <h2 class="stat-label">Students reached</h2>
+      <p class="stat-subtext">Across 31 countries since 2011.</p>
+    </div>
 
-  <!-- Menu panel — hidden until the hamburger is activated -->
-  About
-  Our Work
-  Partners
-  Annual Report
-  Donate
+    <!-- 8. Text under the second number (Schools partnered) -->
+    <div class="grid-item grid-item--text2">
+      <h2 class="stat-label">Schools partnered</h2>
+      <p class="stat-subtext">In 14 countries, from Kenya to Guatemala.</p>
+    </div>
 
+    <!-- 9. Decorative arrow "->" -->
+    <div class="grid-item grid-item--arrow">
+      <img src="./assets/images/icon-arrow-right.svg" alt="icon arrow right for block teachers trained" class="decor-icon" aria-hidden="true">
+    </div>
+
+    <!-- 10. Stats 3: 38K -->
+    <div class="grid-item grid-item--stat3">
+      <div class="stat-box">
+        <div class="stat-box__counter">
+          <span class="stat-number" data-target="38" data-float="false">0</span>
+          <span class="stat-suffix">K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Decorative trend arrow (zigzag) -->
+    <div class="grid-item grid-item--zigzag">
+      <img src="./assets/images/icon-trending-up.svg" alt="icon trend arrow (zigzag) for block graduation lift" class="decor-icon" aria-hidden="true">
+    </div>
+
+    <!-- 12. Stats 4: 3.1× -->
+    <div class="grid-item grid-item--stat4">
+      <div class="stat-box">
+        <div class="stat-box__counter">
+          <span class="stat-number" data-target="3.1" data-float="true">0</span>
+          <span class="stat-suffix">×</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. Text under the third digit (Teachers trained) -->
+    <div class="grid-item grid-item--text3">
+      <h2 class="stat-label">Teachers trained</h2>
+      <p class="stat-subtext">Equipped with modern tools and methodology.</p>
+    </div>
+
+    <!-- 14. Text under the fourth digit (Graduation lift) -->
+    <div class="grid-item grid-item--text4">
+      <h2 class="stat-label">Graduation lift</h2>
+      <p class="stat-subtext">Partner schools outperform national averages 3x.</p>
+    </div>
+
+    <!--Footer-->>
+    <!-- 15. Brand Copyright (Bottom Left Corner) -->
+    <div class="grid-item grid-item--copyright">
+      <p class="copyright">© 2026 Bridge Collective</p>
+    </div>
+
+    <!-- 16. Charity number (Bottom right corner) -->
+    <div class="grid-item grid-item--charity">
+      <p class="charity-number">Registered charity 12345678</p>
+    </div>
+
+  </main>
+
+  <!-- Frontend Mentor attribution block (leave outside the grid at the bottom) -->
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">Osty</a>.
   </div>
 </body>
 </html>
