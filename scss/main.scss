@@ -3,3 +3,12 @@
 @import 'reset';
 @import 'grid-layout';
 @import 'menu';
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-panel {
+    transition: none !important;
+  }
+  .menu-overlay {
+    transition: none !important;
+  }
+}

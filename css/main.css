@@ -439,4 +439,12 @@ img {
   .menu-panel.is-open {
     transform: translateX(0);
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-panel {
+    transition: none !important;
+  }
+  .menu-overlay {
+    transition: none !important;
+  }
 }/*# sourceMappingURL=main.css.map */
